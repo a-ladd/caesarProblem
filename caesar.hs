@@ -61,6 +61,11 @@ findPlainText [] n = ("", -1)
 findPlainText lst n = if (checkStr (head lst))
                     then ((head lst), n)
                     else findPlainText (tail lst) (n+1)
-                    
+
+
+--get input immediately on running the program (as hackerrank does)
+--convert and spit it back out in the format listed on the doc
 main = do
-  findPlainText (allStrings input2) 1
+  newInput <- getLine
+  let newOutput = findPlainText (allStrings newInput) 1
+  putStrLn $ (fst newOutput) ++ "\n" ++ (show (snd newOutput))
